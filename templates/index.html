@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<title>Comprehend Sample</title>
+ <head>
+   <!-- Required meta tags -->
+   <meta charset="utf-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+   <title>Comprehend Sample</title>
+ </head>
+
+ <body>
+    <header>
+        <h1>Amazon Comprehend のサンプル</h1>
+    </header>
+
+    <form method="post" action="/">
+        <div>
+            <textarea name="input_text" id="input_text" rows="10" cols="100" placeholder="文章を入力してください。">{{ text_input }}</textarea>
+        </div>
+
+        <div>
+            <input type="submit" value="送信する">  
+        </div>
+    </form>
+
+    <div id="result">
+        <p>Sentiment　⇒　{{ sentiment }}</p>
+        <div>
+            
+            {% if sentiment %}
+                {% if sentiment=="POSITIVE" %}
+                    <img src="{{ url_for('static', filename='img/106_h_24.png') }}" width="60">	
+                {% elif sentiment=="NEGATIVE" %}
+                    <img src="{{ url_for('static', filename='img/118_h_24.png') }}" width="60">	
+                {% elif sentiment=="NEUTRAL" %}
+                    <img src="{{ url_for('static', filename='img/108_h_24.png') }}" width="60">
+                {% else %}
+                    <img src="{{ url_for('static', filename='img/110_h_24.png') }}" width="60">
+                {% endif %}
+            {% endif %}
+        </div>
+        <textarea name="result_json" id="result_json" rows="10" cols="100">{{ text_json }}</textarea>
+    </div>
+
+ </body>
+</html>
